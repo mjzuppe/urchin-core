@@ -5,10 +5,14 @@ skip-lint = false
 [programs.localnet]
 taxonomy_program = "2rasBfCUQYPAcn2AjCYFvzjSokRYbrZJV3oeu2W696nB"
 template_program = "DDr6GWEUMARbpwThziuFpwCUkmWAG1htNyQpfdwZJf2G"
+asset_program = "H1YXak97J5CiuEJUjdMQg9YSEkCRLHpKQA3kuUEUKgYz"
+entry_program = "7BnsrUwQorEwpzLK5U9Kte9qPgWXzGPNyKBJJXdDEPHW"
 
 [programs.devnet]
 taxonomy_program = "2rasBfCUQYPAcn2AjCYFvzjSokRYbrZJV3oeu2W696nB"
 template_program = "DDr6GWEUMARbpwThziuFpwCUkmWAG1htNyQpfdwZJf2G"
+asset_program = "H1YXak97J5CiuEJUjdMQg9YSEkCRLHpKQA3kuUEUKgYz"
+entry_program = "7BnsrUwQorEwpzLK5U9Kte9qPgWXzGPNyKBJJXdDEPHW"
 
 [registry]
 url = "https://api.apr.dev"

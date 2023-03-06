@@ -1,7 +1,7 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { TemplateProgram } from "../target/types/template_program";
-import * as assert from "assert";
+import {assert} from "chai";
 
 describe("template-program", () => {
   // Configure the client to use the local cluster.
@@ -16,13 +16,13 @@ describe("template-program", () => {
 
   it("can create a new template", async () => {
     // Add your test here.
-    await program.methods.createTemplate(fakeSHA256, newKey.publicKey,false).accounts({
+    await program.methods.createTemplate(fakeSHA256, newKey.publicKey, false).accounts({
       template: newKey.publicKey,
       payer: anchor.getProvider().wallet.publicKey,
       owner: owner.publicKey,
       systemProgram: anchor.web3.SystemProgram.programId,
     }).signers([newKey, owner]).rpc();
-    
+
     const templateFound = await program.account.templateAccount.fetch(newKey.publicKey);
     assert.equal(templateFound.arweaveId, "f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b");
   });

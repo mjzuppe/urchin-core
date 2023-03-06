@@ -1,7 +1,7 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { TaxonomyProgram } from "../target/types/taxonomy_program";
-import * as assert from "assert";
+import {assert} from "chai";
 
 describe("taxonomy-program", () => {
   // Configure the client to use the local cluster.
