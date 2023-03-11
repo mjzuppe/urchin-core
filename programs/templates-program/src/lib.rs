@@ -7,7 +7,7 @@ declare_id!("DDr6GWEUMARbpwThziuFpwCUkmWAG1htNyQpfdwZJf2G");
 pub mod template_program { //🐍 case
     use super::*;
    
-    pub fn create_template(ctx: Context<CreateTemplateCxt>, arweave_id: String, original: Pubkey, archived: bool) -> Result<()> { //contexts + sides of fries 🐍 LABEL
+    pub fn create_template(ctx: Context<CreateTemplateCxt>, arweave_id: String, original: Option<Pubkey>, archived: bool) -> Result<()> { //contexts + sides of fries 🐍 LABEL
     // extract from context and write
     let payload: &mut Account<TemplateAccount> = &mut ctx.accounts.template; 
     let owner: &Signer = &ctx.accounts.owner; 
@@ -25,10 +25,16 @@ pub mod template_program { //🐍 case
     Ok(()) //handle error
 }
 
-pub fn update_template(ctx: Context<UpdateTemplateCxt>, archived: bool) -> Result<()> { //contexts + sides of fries 🐍 LABEL
+pub fn update_template(ctx: Context<UpdateTemplateCxt>, archived: bool, _version: u8) -> Result<()> { //contexts + sides of fries 🐍 LABEL
     // extract from context and write
     let payload: &mut Account<TemplateAccount> = &mut ctx.accounts.template; 
+    
+    if payload.version + 1 != _version {
+        return Err(ErrorCode::InvalidVersion.into())
+    }
+
     payload.archived = archived;
+    payload.version = _version;
     Ok(()) //handle error
 }
 
@@ -60,7 +66,7 @@ pub struct UpdateTemplateCxt<'info> {
 pub struct TemplateAccount {
     pub owner: Pubkey,
     pub arweave_id: String,
-    pub original: Pubkey,
+    pub original: Option<Pubkey>,
     pub archived: bool,
     pub version: u8,
 }
@@ -85,5 +91,7 @@ impl TemplateAccount {
 pub enum ErrorCode {
     #[msg("arweave_id is not the correct length.")]
     IdIncorrectLength,
+    #[msg("this is an invalid version.")]
+    InvalidVersion,
 
 }

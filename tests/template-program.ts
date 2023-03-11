@@ -16,7 +16,7 @@ describe("template-program", () => {
 
   it("can create a new template", async () => {
     // Add your test here.
-    await program.methods.createTemplate(fakeSHA256, newKey.publicKey, false).accounts({
+    await program.methods.createTemplate(fakeSHA256, null, false).accounts({
       template: newKey.publicKey,
       payer: anchor.getProvider().wallet.publicKey,
       owner: owner.publicKey,
@@ -50,7 +50,7 @@ describe("template-program", () => {
   });
 
   it("can update a template", async () => {
-    await program.methods.updateTemplate(true).accounts({
+    await program.methods.updateTemplate(true, 1).accounts({
       template: newKey.publicKey,
       payer: anchor.getProvider().wallet.publicKey,
       owner: owner.publicKey,
