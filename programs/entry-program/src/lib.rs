@@ -10,7 +10,7 @@ pub mod entry_program {
         let payload: &mut Account<EntryAccount> = &mut ctx.accounts.entry; 
         let owner: &Signer = &ctx.accounts.owner; 
 
-        if arweave_id.chars().count() != 64 {
+        if arweave_id.chars().count() != 43 {
             return Err(ErrorCode::IdIncorrectLength.into())
         }
 
@@ -36,7 +36,7 @@ pub mod entry_program {
             return Err(ErrorCode::Immutable.into())
         }
 
-        if arweave_id.chars().count() != 64 {
+        if arweave_id.chars().count() != 43 {
             return Err(ErrorCode::IdIncorrectLength.into())
         }
 

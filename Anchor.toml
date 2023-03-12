@@ -18,7 +18,7 @@ entry_program = "7BnsrUwQorEwpzLK5U9Kte9qPgWXzGPNyKBJJXdDEPHW"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "Localnet"
 wallet = "/Users/markzuppe/.config/solana/id.json"
 
 [scripts]

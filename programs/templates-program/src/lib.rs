@@ -12,7 +12,7 @@ pub mod template_program { //🐍 case
     let payload: &mut Account<TemplateAccount> = &mut ctx.accounts.template; 
     let owner: &Signer = &ctx.accounts.owner; 
     
-    if arweave_id.chars().count() != 64 {
+    if arweave_id.chars().count() != 43 {
         return Err(ErrorCode::IdIncorrectLength.into())
     }
 

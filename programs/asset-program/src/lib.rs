@@ -11,7 +11,7 @@ pub mod asset_program { //🐍 case
         let payload: &mut Account<AssetAccount> = &mut ctx.accounts.asset; 
         let owner: &Signer = &ctx.accounts.owner; 
 
-        if arweave_id.chars().count() != 64 {
+        if arweave_id.chars().count() != 43 {
             return Err(ErrorCode::IdIncorrectLength.into())
         }
 
@@ -30,7 +30,7 @@ pub mod asset_program { //🐍 case
             return Err(ErrorCode::Immutable.into())
         }
 
-        if arweave_id.chars().count() != 64 {
+        if arweave_id.chars().count() != 43 {
             return Err(ErrorCode::IdIncorrectLength.into())
         }
 
